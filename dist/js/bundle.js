@@ -68,11 +68,26 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(2);
+
+__webpack_require__(3);
+
+__webpack_require__(4);
+
+__webpack_require__(5);
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83,7 +98,13 @@ var phrase = "Bonjours tout le monde";
 //faire apparaitre le contnu de la variable phrase dans la console
 console.log(phrase);
 
-//exo 2
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 //selectionner un element
 var element = document.querySelector('#element-to-select');
 //afficher dns la console
@@ -92,7 +113,11 @@ console.log(element.innerText);
 element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
-//exo 3
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 //recuperer les element dont on va se servir
@@ -104,7 +129,13 @@ var direbonjour = function direbonjour() {
 //ecouter les evenement provoque par l'utilisateur ou autre
 btn3.addEventListener('click', direbonjour);
 
-//exo 4
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 //recuperer les element dont on va se servir
 var inputchanger = document.querySelector("#title-content");
 var btn4 = document.querySelector("#change-title");
@@ -120,7 +151,7 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 2 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
