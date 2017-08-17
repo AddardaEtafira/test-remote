@@ -67,39 +67,23 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
-__webpack_require__(7);
+__webpack_require__(1);
 
-__webpack_require__(8);
+__webpack_require__(2);
 
-__webpack_require__(9);
+__webpack_require__(3);
 
-__webpack_require__(10);
+__webpack_require__(4);
 
-__webpack_require__(11);
+__webpack_require__(5);
 
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+__webpack_require__(6);
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -111,7 +95,7 @@ var phrase = "Bonjours tout le monde";
 console.log(phrase);
 
 /***/ }),
-/* 8 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -126,7 +110,7 @@ element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
 /***/ }),
-/* 9 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -142,7 +126,7 @@ var direbonjour = function direbonjour() {
 btn3.addEventListener('click', direbonjour);
 
 /***/ }),
-/* 10 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,7 +147,7 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 11 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -202,6 +186,24 @@ var viderlechamps = function viderlechamps() {
 //ecouter les evenement provoque par l'utilisateur ou autre
 btn4.addEventListener('click', changerTitre);
 inputchanger.addEventListener('click', viderlechamps);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//recuper les element
+//definir les fonctionnalite
+//ajouter un element
+var ajouterunevenement = function ajouterunevenement() {}
+//cree un element li
+//mettre du text e dans l'element li
+//ajouter l'element li a la fin de l'element ul
+
+//ajouter lesecouteur d'evenement
+;
 
 /***/ })
 /******/ ]);

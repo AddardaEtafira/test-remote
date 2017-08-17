@@ -12,3 +12,7 @@ import "./exo/exo-4";
 
 //exo 5
 import "./exo/exo-5";
+
+//exo 6
+import "./exo/exo-6";
+
