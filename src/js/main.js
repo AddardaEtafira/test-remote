@@ -9,3 +9,6 @@ import "./exo/exo-3";
 
 //exo 4
 import "./exo/exo-4";
+
+//exo 5
+import "./exo/exo-5";

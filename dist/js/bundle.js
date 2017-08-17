@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
@@ -78,16 +78,28 @@ module.exports = __webpack_require__(6);
 "use strict";
 
 
-__webpack_require__(2);
+__webpack_require__(7);
 
-__webpack_require__(3);
+__webpack_require__(8);
 
-__webpack_require__(4);
+__webpack_require__(9);
 
-__webpack_require__(5);
+__webpack_require__(10);
+
+__webpack_require__(11);
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99,7 +111,7 @@ var phrase = "Bonjours tout le monde";
 console.log(phrase);
 
 /***/ }),
-/* 3 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -114,7 +126,7 @@ element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
 /***/ }),
-/* 4 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -130,7 +142,7 @@ var direbonjour = function direbonjour() {
 btn3.addEventListener('click', direbonjour);
 
 /***/ }),
-/* 5 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -151,10 +163,45 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+//recuperer les element dont on va se servir
+var section5 = document.querySelector("#exo-5");
+var inputchanger = section5.querySelector("#title-content");
+var btn4 = section5.querySelector("#change-title");
+var h4Exo4 = section5.querySelector("#title-to-change");
+//ecrire les fonctionnalites
+var changerTitre = function changerTitre() {
+    //prendre le contenu de l'input
+    var newTitle = inputchanger.value;
+    //verifier que newtitle n'est pas vide
+    if (newTitle === "") {
+        //on va mettre un message erreur
+        inputchanger.classList.add('error');
+        inputchanger.setAttribute("placeholder", "champs obligatoire");
+    }
+    //sinon on le contenu dans le titre
+    else {
+            //mettre le contenu dans le h4
+            h4Exo4.innerText = newTitle;
+            //enlever le code error
+            inputchanger.classList.remove('error');
+        }
+};
+var viderlechamps = function viderlechamps() {
+    if (inputchanger.classList.contains('error')) {
+        inputchanger.value = "";
+        //retirer la class error
+        inputchanger.classList.remove('error');
+    }
+};
+//ecouter les evenement provoque par l'utilisateur ou autre
+btn4.addEventListener('click', changerTitre);
+inputchanger.addEventListener('click', viderlechamps);
 
 /***/ })
 /******/ ]);
