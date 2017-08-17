@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
@@ -56,40 +57,50 @@
 
     </header>
     <div class="container">
-        <section id="exo-1">
-            <h1>dire bonjours dans la console</h1>
-            <p> définir une variable avec un objet string et l'afficher dan la console.</p>
-            <div class="exo"></div>
-        </section>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active" role="presentation"><a data-toggle="tab" href="#exo-1">exo 1</a></li>
+            <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-2">exo 2</a></li>
+            <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-3">exo 3</a></li>
+            <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-4">exo 4</a></li>
+        </ul>
+        <div class="tab-content">
+            <section id="exo-1" role="tabpanel" class="tab-pane active">
+                <h1>dire bonjours dans la console</h1>
+                <p> définir une variable avec un objet string et l'afficher dan la console.</p>
+                <div class="exo"></div>
+            </section>
 
-        <section id="exo-2">
-            <h1>selectionner un élément du DOM</h1>
-            <p>afficher dans la conole un élément du DOM. et a propriete texte.</p>
-            <div class="exo">
-                <h4 id="element-to-select">Select me</h4>
-            </div>
-        </section>
+            <section id="exo-2" role="tabpanel" class="tab-pane">
+                <h1>selectionner un élément du DOM</h1>
+                <p>afficher dans la conole un élément du DOM. et a propriete texte.</p>
+                <div class="exo">
+                    <h4 id="element-to-select">Select me</h4>
+                </div>
+            </section>
 
-        <section id="exo-3">
-            <h1>capturer un evenement du DOM</h1>
-            <p>ajouter un ecouteur d'evenement a un bouton</p>
-            <div class="exo">
-                <button id="first-event">click me</button>
-            </div>
-        </section>
+            <section id="exo-3" role="tabpanel" class="tab-pane">
+                <h1>capturer un evenement du DOM</h1>
+                <p>ajouter un ecouteur d'evenement a un bouton</p>
+                <div class="exo">
+                    <button id="first-event">click me</button>
+                </div>
+            </section>
 
-        <section id="exo-4">
-            <h1>remplacer le contenu d'un element</h1>
-            <p>mettre le contenu d'un element input dans un sous-titre lorsque l'on clique sur un boutton</p>
-            <div class="exo">
-                <h4 id="title-to-change">...en attente</h4>
-                <input type="text" id="title-content">
-                <button id="change-title">click me</button>
-            </div>
-        </section>
+            <section id="exo-4" role="tabpanel" class="tab-pane">
+                <h1>remplacer le contenu d'un element</h1>
+                <p>mettre le contenu d'un element input dans un sous-titre lorsque l'on clique sur un boutton</p>
+                <div class="exo">
+                    <h4 id="title-to-change">...en attente</h4>
+                    <input type="text" id="title-content">
+                    <button id="change-title">click me</button>
+                </div>
+            </section>
+        </div>
 
 
     </div>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./js/bundle.js"></script>
 </body>
 

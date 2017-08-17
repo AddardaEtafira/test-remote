@@ -1,0 +1,28 @@
+section {
+  background-color: orchid;
+  padding: 2%; }
+
+p {
+  color: #FFFDFD;
+  background-color: #670422;
+  margin: 5%;
+  padding: 2%; }
+
+h1 {
+  color: #FFFFFF;
+  background-color: blueviolet;
+  margin: 5%;
+  padding: 2%; }
+
+.exo {
+  margin: 5%;
+  padding: 2%;
+  color: #AAAAAA;
+  background-color: greenyellow; }
+
+button {
+  background-color: rosybrown;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px; }

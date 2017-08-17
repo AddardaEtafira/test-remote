@@ -38,4 +38,3 @@ let changerTitre = function () {
 }
 //ecouter les evenement provoque par l'utilisateur ou autre
 btn4.addEventListener('click', changerTitre);
-
