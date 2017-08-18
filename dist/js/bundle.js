@@ -67,20 +67,9 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
 __webpack_require__(1);
+module.exports = __webpack_require__(3);
 
-__webpack_require__(2);
-
-__webpack_require__(3);
-
-__webpack_require__(4);
-
-__webpack_require__(5);
-
-__webpack_require__(6);
 
 /***/ }),
 /* 1 */
@@ -89,10 +78,7 @@ __webpack_require__(6);
 "use strict";
 
 
-//définir une phrase d'accueil
-var phrase = "Bonjours tout le monde";
-//faire apparaitre le contnu de la variable phrase dans la console
-console.log(phrase);
+__webpack_require__(2);
 
 /***/ }),
 /* 2 */
@@ -101,167 +87,26 @@ console.log(phrase);
 "use strict";
 
 
-//selectionner un element
-var element = document.querySelector('#element-to-select');
-//afficher dns la console
-console.log(element);
-console.log(element.innerText);
-element.innerText = "ceci est le contenu modifier en js";
-console.log(element.innerText);
+//recup element
+var section7 = document.querySelector("#exo-7");
+var btn = section7.querySelectorAll('button');
+
+//supprimer un enfant
+var supprimerElement = function supprimerElement() {
+    section7.removeChild(this);
+};
+
+//ecouteur d'evement
+
+btn.forEach(function (element) {
+    element.addEventListener('click', supprimerElement);
+});
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-//recuperer les element dont on va se servir
-var btn3 = document.querySelector("#first-event");
-//ecrire les fonctionnalites
-var direbonjour = function direbonjour() {
-    console.log("on me click");
-};
-//ecouter les evenement provoque par l'utilisateur ou autre
-btn3.addEventListener('click', direbonjour);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//recuperer les element dont on va se servir
-var inputchanger = document.querySelector("#title-content");
-var btn4 = document.querySelector("#change-title");
-var h4Exo4 = document.querySelector("#title-to-change");
-//ecrire les fonctionnalites
-var changerTitre = function changerTitre() {
-    //prendre le contenu de l'input
-    var newTitle = inputchanger.value;
-    //mettre le contenu dans le h4
-    h4Exo4.innerText = newTitle;
-};
-//ecouter les evenement provoque par l'utilisateur ou autre
-btn4.addEventListener('click', changerTitre);
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//recuperer les element dont on va se servir
-var section5 = document.querySelector("#exo-5");
-var inputchanger = section5.querySelector("#title-content");
-var btn4 = section5.querySelector("#change-title");
-var h4Exo4 = section5.querySelector("#title-to-change");
-//ecrire les fonctionnalites
-var changerTitre = function changerTitre() {
-    //prendre le contenu de l'input
-    var newTitle = inputchanger.value;
-    //verifier que newtitle n'est pas vide
-    if (newTitle === "") {
-        //on va mettre un message erreur
-        inputchanger.classList.add('error');
-        inputchanger.setAttribute("placeholder", "champs obligatoire");
-    }
-    //sinon on le contenu dans le titre
-    else {
-            //mettre le contenu dans le h4
-            h4Exo4.innerText = newTitle;
-            //enlever le code error
-            inputchanger.classList.remove('error');
-        }
-};
-var viderlechamps = function viderlechamps() {
-    if (inputchanger.classList.contains('error')) {
-        inputchanger.value = "";
-        //retirer la class error
-        inputchanger.classList.remove('error');
-    }
-};
-//ecouter les evenement provoque par l'utilisateur ou autre
-btn4.addEventListener('click', changerTitre);
-inputchanger.addEventListener('click', viderlechamps);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// récupérer les éléments 
-var tab_6 = document.querySelector('#exo-6');
-var btn = tab_6.querySelector('button');
-var ul = tab_6.querySelector('ul');
-var section6 = document.querySelector("#exo-6");
-var inputchanger = section6.querySelector("#title-content");
-
-// définir les fonctionnalités 
-
-
-// Ajouter un élément
-var ajouterElement = function ajouterElement() {
-    // Créer un élément li
-    var li = document.createElement("li");
-    //recuper ce qu'il y a dansl'input
-    var newTitle = inputchanger.value;
-    //verifier que newtitle n'est pas vide
-    if (newTitle === "") {
-        //on va mettre un message erreur
-        inputchanger.classList.add('error');
-        //inputchanger.setAttribute("placeholder", "champs obligatoire"); --> c'est moins pratique
-        inputchanger.value = "champs obligatoire";
-    }
-    //verifier qu'il nest pas en error
-    if (inputchanger.classList.contains('error')) {
-        return false;
-    }
-    //sinon on le contenu dans le titre
-    else {
-            // Mettre du texte dans l'élément li
-            var contenu = document.createTextNode(newTitle);
-            li.appendChild(contenu);
-            //ajout une classe au li
-            li.className = "list-group-item";
-
-            // Ajouter l'élément li à la fin de l'élément ul
-            ul.appendChild(li);
-            //enlever le code error
-            inputchanger.classList.remove('error');
-            //ENLEVER LE TEXTE du input
-            newTitle = inputchanger.value = "";
-        }
-};
-
-//elever l'error
-var viderchamp = function viderchamp() {
-    //verifier si le champs est error
-    if (inputchanger.classList.contains('error')) {
-        //vider le value
-        inputchanger.value = "";
-        //retirer la classe error
-        inputchanger.classList.remove('error');
-    }
-};
-
-//localisation de la ouche entree et la mettre en fonction
-var keyupEntre = function keyupEntre() {
-    console.log(event);
-    if (event.code == "Enter") {
-        ajouterElement();
-    }
-};
-
-// ajouter les écouteurs d'événement
-
-btn.addEventListener('click', ajouterElement);
-inputchanger.addEventListener('click', viderchamp);
-inputchanger.addEventListener('keyup', keyupEntre);
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

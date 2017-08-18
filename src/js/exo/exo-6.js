@@ -23,6 +23,9 @@ let ajouterElement = function () {
         inputchanger.classList.add('error');
         //inputchanger.setAttribute("placeholder", "champs obligatoire"); --> c'est moins pratique
         inputchanger.value = "champs obligatoire";
+        //enlever le focus de l'element actif
+        inputchanger.blur();
+
     }
     //verifier qu'il nest pas en error
     if (inputchanger.classList.contains('error')) {
@@ -61,7 +64,7 @@ let viderchamp = function () {
 //localisation de la ouche entree et la mettre en fonction
 let keyupEntre = function () {
     console.log(event);
-    if (event.code == "Enter") {
+    if (event.code == "Enter" || event.code == "NumpadEnter") {
         ajouterElement();
     }
 
