@@ -67,10 +67,16 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(1);
+module.exports = __webpack_require__(8);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
-
-__webpack_require__(1);
 
 __webpack_require__(2);
 
@@ -82,8 +88,10 @@ __webpack_require__(5);
 
 __webpack_require__(6);
 
+__webpack_require__(7);
+
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95,7 +103,7 @@ var phrase = "Bonjours tout le monde";
 console.log(phrase);
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110,7 +118,7 @@ element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -126,7 +134,7 @@ var direbonjour = function direbonjour() {
 btn3.addEventListener('click', direbonjour);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -147,7 +155,7 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -188,13 +196,14 @@ btn4.addEventListener('click', changerTitre);
 inputchanger.addEventListener('click', viderlechamps);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 //recuper les element
+
 //definir les fonctionnalite
 //ajouter un element
 var ajouterunevenement = function ajouterunevenement() {}
@@ -203,7 +212,42 @@ var ajouterunevenement = function ajouterunevenement() {}
 //ajouter l'element li a la fin de l'element ul
 
 //ajouter lesecouteur d'evenement
-;
+
+
+// récupérer les éléments 
+;var tab_6 = document.querySelector('#exo-6');
+var btn = tab_6.querySelector('button');
+var ul = tab_6.querySelector('ul');
+
+// définir les fonctionnalités 
+
+// Ajouter un élément
+var ajouterElement = function ajouterElement() {
+    // Créer un élément li
+    var li = document.createElement("li");
+
+    // Mettre du texte dans l'élément li
+    var contenu = document.createTextNode("New Element");
+    li.appendChild(contenu);
+
+    // Ajouter l'élément li à la fin de l'élément ul
+    ul.appendChild(li);
+};
+
+// ajouter les écouteurs d'événement
+
+btn.addEventListener('click', ajouterElement);
+
+// let li = document.createElement("li");
+// let contenu = document.createTextNode("New Element");
+// ul.appendChild(li);
+// li.appendChild(contenu);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
