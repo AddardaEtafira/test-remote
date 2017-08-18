@@ -58,15 +58,15 @@
     </header>
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active" role="presentation"><a data-toggle="tab" href="#exo-1">exo 1</a></li>
+            <li role="presentation"><a data-toggle="tab" href="#exo-1">exo 1</a></li>
             <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-2">exo 2</a></li>
             <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-3">exo 3</a></li>
             <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-4">exo 4</a></li>
             <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-5">exo 5</a></li>
-            <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-6">exo 6</a></li>
+            <li class="active" role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab" href="#exo-6">exo 6</a></li>
         </ul>
         <div class="tab-content">
-            <section id="exo-1" role="tabpanel" class="tab-pane active">
+            <section id="exo-1" role="tabpanel" class="tab-pane">
                 <h1>dire bonjours dans la console</h1>
                 <p> définir une variable avec un objet string et l'afficher dan la console.</p>
                 <div class="exo"></div>
@@ -107,11 +107,12 @@
                 </div>
             </section>
 
-            <section id="exo-6" role="tabpanel" class="tab-pane">
+            <section id="exo-6" role="tabpanel" class="tab-pane active">
                 <h1>cree et ajouter des element au DOM</h1>
                 <p> ajouter des element dans une liste au click</p>
+                <input type="text" id="title-content">
                 <button class="btn btn-success">Ajouter un element</button>
-                <ul></ul>
+                <ul class="list-group"></ul>
             </section>
         </div>
     </div>

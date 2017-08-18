@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(8);
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
@@ -78,20 +78,30 @@ module.exports = __webpack_require__(8);
 "use strict";
 
 
-__webpack_require__(2);
-
-__webpack_require__(3);
-
-__webpack_require__(4);
-
-__webpack_require__(5);
-
-__webpack_require__(6);
-
 __webpack_require__(7);
+
+__webpack_require__(8);
+
+__webpack_require__(9);
+
+__webpack_require__(10);
+
+__webpack_require__(11);
+
+__webpack_require__(12);
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103,7 +113,7 @@ var phrase = "Bonjours tout le monde";
 console.log(phrase);
 
 /***/ }),
-/* 3 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -118,7 +128,7 @@ element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
 /***/ }),
-/* 4 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -134,7 +144,7 @@ var direbonjour = function direbonjour() {
 btn3.addEventListener('click', direbonjour);
 
 /***/ }),
-/* 5 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -155,7 +165,7 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 6 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -196,58 +206,68 @@ btn4.addEventListener('click', changerTitre);
 inputchanger.addEventListener('click', viderlechamps);
 
 /***/ }),
-/* 7 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-//recuper les element
-
-//definir les fonctionnalite
-//ajouter un element
-var ajouterunevenement = function ajouterunevenement() {}
-//cree un element li
-//mettre du text e dans l'element li
-//ajouter l'element li a la fin de l'element ul
-
-//ajouter lesecouteur d'evenement
-
-
 // récupérer les éléments 
-;var tab_6 = document.querySelector('#exo-6');
+var tab_6 = document.querySelector('#exo-6');
 var btn = tab_6.querySelector('button');
 var ul = tab_6.querySelector('ul');
+var section6 = document.querySelector("#exo-6");
+var inputchanger = section6.querySelector("#title-content");
 
 // définir les fonctionnalités 
+
 
 // Ajouter un élément
 var ajouterElement = function ajouterElement() {
     // Créer un élément li
     var li = document.createElement("li");
+    //recuper ce qu'il y a dansl'input
+    var newTitle = inputchanger.value;
+    //verifier que newtitle n'est pas vide
+    if (newTitle === "") {
+        //on va mettre un message erreur
+        inputchanger.classList.add('error');
+        inputchanger.setAttribute("placeholder", "champs obligatoire");
+    }
+    //sinon on le contenu dans le titre
+    else {
+            // Mettre du texte dans l'élément li
+            var contenu = document.createTextNode(newTitle);
+            li.appendChild(contenu);
+            //ajout une classe au li
+            li.className = "list-group-item";
 
-    // Mettre du texte dans l'élément li
-    var contenu = document.createTextNode("New Element");
-    li.appendChild(contenu);
+            // Ajouter l'élément li à la fin de l'élément ul
+            ul.appendChild(li);
+            //enlever le code error
+            inputchanger.classList.remove('error');
+            //ENLEVER LE TEXTE du input
+            newTitle = inputchanger.value = "";
+        }
+};
+//locolisation de la ouche entree et la mettre en fonction
 
-    // Ajouter l'élément li à la fin de l'élément ul
-    ul.appendChild(li);
+var keyupEntre = function keyupEntre() {
+    console.log(event);
+    if (event.code == "Enter") {
+        ajouterElement();
+    }
 };
 
 // ajouter les écouteurs d'événement
 
 btn.addEventListener('click', ajouterElement);
+inputchanger.addEventListener('keyup', keyupEntre);
 
 // let li = document.createElement("li");
 // let contenu = document.createTextNode("New Element");
 // ul.appendChild(li);
 // li.appendChild(contenu);
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
