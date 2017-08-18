@@ -93,7 +93,8 @@ var btn = section7.querySelectorAll('button');
 
 //supprimer un enfant
 var supprimerElement = function supprimerElement() {
-    section7.removeChild(this);
+    var parent = this.parentElement;
+    parent.removeChild(this);
 };
 
 //ecouteur d'evement
