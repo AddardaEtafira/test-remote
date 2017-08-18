@@ -21,7 +21,12 @@ let ajouterElement = function () {
     if (newTitle === "") {
         //on va mettre un message erreur
         inputchanger.classList.add('error');
-        inputchanger.setAttribute("placeholder", "champs obligatoire");
+        //inputchanger.setAttribute("placeholder", "champs obligatoire"); --> c'est moins pratique
+        inputchanger.value = "champs obligatoire";
+    }
+    //verifier qu'il nest pas en error
+    if (inputchanger.classList.contains('error')) {
+        return false;
     }
     //sinon on le contenu dans le titre
     else {
@@ -40,8 +45,20 @@ let ajouterElement = function () {
 
     }
 }
-//locolisation de la ouche entree et la mettre en fonction
 
+//elever l'error
+let viderchamp = function () {
+    //verifier si le champs est error
+    if (inputchanger.classList.contains('error')) {
+        //vider le value
+        inputchanger.value = "";
+        //retirer la classe error
+        inputchanger.classList.remove('error');
+    }
+}
+
+
+//localisation de la ouche entree et la mettre en fonction
 let keyupEntre = function () {
     console.log(event);
     if (event.code == "Enter") {
@@ -52,16 +69,8 @@ let keyupEntre = function () {
 }
 
 
-
-
 // ajouter les écouteurs d'événement
 
 btn.addEventListener('click', ajouterElement);
+inputchanger.addEventListener('click', viderchamp);
 inputchanger.addEventListener('keyup', keyupEntre);
-
-
-
-// let li = document.createElement("li");
-// let contenu = document.createTextNode("New Element");
-// ul.appendChild(li);
-// li.appendChild(contenu);

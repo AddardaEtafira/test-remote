@@ -67,41 +67,23 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
-__webpack_require__(7);
+__webpack_require__(1);
 
-__webpack_require__(8);
+__webpack_require__(2);
 
-__webpack_require__(9);
+__webpack_require__(3);
 
-__webpack_require__(10);
+__webpack_require__(4);
 
-__webpack_require__(11);
+__webpack_require__(5);
 
-__webpack_require__(12);
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+__webpack_require__(6);
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -113,7 +95,7 @@ var phrase = "Bonjours tout le monde";
 console.log(phrase);
 
 /***/ }),
-/* 8 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -128,7 +110,7 @@ element.innerText = "ceci est le contenu modifier en js";
 console.log(element.innerText);
 
 /***/ }),
-/* 9 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -144,7 +126,7 @@ var direbonjour = function direbonjour() {
 btn3.addEventListener('click', direbonjour);
 
 /***/ }),
-/* 10 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -165,7 +147,7 @@ var changerTitre = function changerTitre() {
 btn4.addEventListener('click', changerTitre);
 
 /***/ }),
-/* 11 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -206,7 +188,7 @@ btn4.addEventListener('click', changerTitre);
 inputchanger.addEventListener('click', viderlechamps);
 
 /***/ }),
-/* 12 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -232,7 +214,12 @@ var ajouterElement = function ajouterElement() {
     if (newTitle === "") {
         //on va mettre un message erreur
         inputchanger.classList.add('error');
-        inputchanger.setAttribute("placeholder", "champs obligatoire");
+        //inputchanger.setAttribute("placeholder", "champs obligatoire"); --> c'est moins pratique
+        inputchanger.value = "champs obligatoire";
+    }
+    //verifier qu'il nest pas en error
+    if (inputchanger.classList.contains('error')) {
+        return false;
     }
     //sinon on le contenu dans le titre
     else {
@@ -250,8 +237,19 @@ var ajouterElement = function ajouterElement() {
             newTitle = inputchanger.value = "";
         }
 };
-//locolisation de la ouche entree et la mettre en fonction
 
+//elever l'error
+var viderchamp = function viderchamp() {
+    //verifier si le champs est error
+    if (inputchanger.classList.contains('error')) {
+        //vider le value
+        inputchanger.value = "";
+        //retirer la classe error
+        inputchanger.classList.remove('error');
+    }
+};
+
+//localisation de la ouche entree et la mettre en fonction
 var keyupEntre = function keyupEntre() {
     console.log(event);
     if (event.code == "Enter") {
@@ -262,12 +260,8 @@ var keyupEntre = function keyupEntre() {
 // ajouter les écouteurs d'événement
 
 btn.addEventListener('click', ajouterElement);
+inputchanger.addEventListener('click', viderchamp);
 inputchanger.addEventListener('keyup', keyupEntre);
-
-// let li = document.createElement("li");
-// let contenu = document.createTextNode("New Element");
-// ul.appendChild(li);
-// li.appendChild(contenu);
 
 /***/ })
 /******/ ]);
