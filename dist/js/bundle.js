@@ -87,41 +87,75 @@ __webpack_require__(2);
 "use strict";
 
 
-//recup element
-var section7 = document.querySelector("#exo-7");
-var btn = section7.querySelectorAll('button');
+var section8 = document.querySelector("#exo-8");
+var input1 = section8.querySelector("#input-1");
+var input2 = section8.querySelector("#input-2");
+var btn = section8.querySelector("button");
+var reponse = section8.querySelector("span");
+var inputs = section8.querySelectorAll('input');
 
-//supprimer un enfant
-var supprimerElement = function supprimerElement() {
-    // //recup parent
-    // let parent = this.parentElement;
-    // //le parent supprime l'enfant
-    // parent.removeChild(this);
-    //creation d'un span
-    var createSpan = document.createElement("span");
-    createSpan.style.width = "95px";
-    createSpan.style.display = "inline-block";
-    //echanger la place entre le span et le button
-    this.parentNode.replaceChild(createSpan, this);
+input1.ondrop = function (event) {
+    return false;
+};
+input2.ondrop = function (event) {
+    return false;
+};
+var addition = function addition() {
+    //prendr le nombre dans l'input 1
+    var nombre1 = input1.value;
+    //prendre le nombre dans l'input 2
+    var nombre2 = input2.value;
 
-    //creation d'un button
-    var createBtn = document.createElement("button");
-    // Mettre du texte dans l'élément li
-    var contenu = document.createTextNode("delete me");
-    createBtn.appendChild(contenu);
-    //ajouter une classe
-    createBtn.className = "btn btn-success";
-    //ajouter dans le parent
-    section7.appendChild(createBtn);
-    //ajouter un ecouteur d'evenement
-    createBtn.addEventListener('click', supprimerElement);
+    if (check(input1) === false || check(input2) === false) {
+        return false;
+    }
+    if (verifError(input1) === false || verifError(input2) === false) {
+        return false;
+    }
+    enleverError();
+
+    //les addit
+    reponse.innerText = parseFloat(nombre1) + parseFloat(nombre2);
+    return false;
+    quedeschiffres(input1);
+    quedeschiffres(input2);
+};
+var check = function check(input) {
+    if (input.value === "") {
+        //on va mettre un message erreur
+        input.classList.add('error');
+        input.value = "champs obligatoire";
+        //enlever le focus de l'element actif
+        input.blur();
+        return false;
+    }
+};
+var verifError = function verifError(input) {
+    //verifier qu'il nest pas en error
+    if (input.classList.contains('error')) {
+        return false;
+    }
+};
+var enleverError = function enleverError() {
+    inputs.forEach(function (element) {
+        if (element.classList.contains('error')) {
+            //enlever le code error
+            element.classList.remove('error');
+            //ENLEVER LE TEXTE du input
+            element.value = "";
+        }
+    });
 };
 
-//ecouteur d'evement
-
-btn.forEach(function (element) {
-    element.addEventListener('click', supprimerElement);
+var quedeschiffres = function quedeschiffres() {
+    this.value = this.value.replace(/\D/g, '');
+};
+btn.addEventListener('click', addition);
+inputs.forEach(function (element) {
+    element.addEventListener('click', enleverError);
 });
+input1.addEventListener('keyup', quedeschiffres);
+input2.addEventListener('keyup', quedeschiffres);
 
 /***/ }),
 /* 3 */
