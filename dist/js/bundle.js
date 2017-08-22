@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
@@ -78,10 +78,11 @@ module.exports = __webpack_require__(3);
 "use strict";
 
 
-__webpack_require__(2);
+__webpack_require__(3);
 
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,10 +91,13 @@ __webpack_require__(2);
 var section8 = document.querySelector("#exo-8");
 var input1 = section8.querySelector("#input-1");
 var input2 = section8.querySelector("#input-2");
-var btn = section8.querySelector("button");
-var reponse = section8.querySelector("span");
+var btn = section8.querySelector("#egale");
+var reponse = section8.querySelector("#reponse");
 var inputs = section8.querySelectorAll('input');
-
+var btnreset = section8.querySelector('#reset');
+var operateur = section8.querySelector('#operateur');
+var lesOperateurs = section8.querySelectorAll('#operateur-1');
+//ne pas permetre le glisser
 input1.ondrop = function (event) {
     return false;
 };
@@ -105,8 +109,12 @@ var addition = function addition() {
     var nombre1 = input1.value;
     //prendre le nombre dans l'input 2
     var nombre2 = input2.value;
-
+    //predn la valeur du dans le selecteur
     if (check(input1) === false || check(input2) === false) {
+        return false;
+    }
+
+    if (checkSpan(operateur) === false) {
         return false;
     }
     if (verifError(input1) === false || verifError(input2) === false) {
@@ -115,10 +123,21 @@ var addition = function addition() {
     enleverError();
 
     //les addit
-    reponse.innerText = parseFloat(nombre1) + parseFloat(nombre2);
+    switch (operateur.innerText) {
+        case "+":
+            reponse.innerText = parseFloat(nombre1) + parseFloat(nombre2);
+            break;
+        case "-":
+            reponse.innerText = parseFloat(nombre1) - parseFloat(nombre2);
+            break;
+        case "*":
+            reponse.innerText = parseFloat(nombre1) * parseFloat(nombre2);
+            break;
+        case "/":
+            reponse.innerText = parseFloat(nombre1) / parseFloat(nombre2);
+            break;
+    }
     return false;
-    quedeschiffres(input1);
-    quedeschiffres(input2);
 };
 var check = function check(input) {
     if (input.value === "") {
@@ -127,6 +146,14 @@ var check = function check(input) {
         input.value = "champs obligatoire";
         //enlever le focus de l'element actif
         input.blur();
+        return false;
+    }
+};
+
+var checkSpan = function checkSpan(input) {
+    if (operateur.innerText === "") {
+        //on va mettre un message erreur
+        reponse.innerText = "choisir operateur";
         return false;
     }
 };
@@ -146,19 +173,55 @@ var enleverError = function enleverError() {
         }
     });
 };
-
-var quedeschiffres = function quedeschiffres() {
-    this.value = this.value.replace(/\D/g, '');
+// Vérifier que l'on introduit bien nombre
+var checkNumber = function checkNumber() {
+    // Définition d'un expression régulière
+    var reg = /^-?[0-9]*\.?[0-9]*$/;
+    // Vérifier si la valeur est bien un nombre
+    while (!reg.test(this.value)) {
+        // Récupérer la longeur de la chaine de caractère
+        var longueurText = this.value.length;
+        // Enlever le dernier cractère
+        this.value = this.value.substr(0, longueurText - 1);
+    }
 };
+
+function clear() {
+    input1.value = "";
+    input2.value = "";
+    reponse.innerText = "";
+}
+function choisirOperateur() {
+    //prendre la valeur
+    var unOperateur = this.innerText;
+    //le mettre dans le span
+    operateur.innerText = unOperateur;
+}
+
+var focus2 = function focus2() {
+    input2.focus();
+};
+
+//ecouteurs 
 btn.addEventListener('click', addition);
 inputs.forEach(function (element) {
     element.addEventListener('click', enleverError);
 });
-input1.addEventListener('keyup', quedeschiffres);
-input2.addEventListener('keyup', quedeschiffres);
+
+btnreset.addEventListener('click', clear);
+
+inputs.forEach(function (input) {
+    input.addEventListener('keyup', checkNumber);
+});
+lesOperateurs.forEach(function (element) {
+    element.addEventListener('click', choisirOperateur);
+});
+lesOperateurs.forEach(function (element) {
+    element.addEventListener('click', focus2);
+});
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

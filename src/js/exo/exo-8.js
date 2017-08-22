@@ -1,10 +1,13 @@
 let section8 = document.querySelector("#exo-8");
 let input1 = section8.querySelector("#input-1");
 let input2 = section8.querySelector("#input-2");
-let btn = section8.querySelector("button");
-let reponse = section8.querySelector("span");
+let btn = section8.querySelector("#egale");
+let reponse = section8.querySelector("#reponse");
 let inputs = section8.querySelectorAll('input');
-
+let btnreset = section8.querySelector('#reset');
+let operateur = section8.querySelector('#operateur');
+let lesOperateurs = section8.querySelectorAll('#operateur-1')
+//ne pas permetre le glisser
 input1.ondrop = function (event) {
     return false
 }
@@ -16,8 +19,12 @@ let addition = function () {
     let nombre1 = input1.value;
     //prendre le nombre dans l'input 2
     let nombre2 = input2.value;
-
+    //predn la valeur du dans le selecteur
     if (check(input1) === false || check(input2) === false) {
+        return false;
+    }
+
+    if (checkSpan(operateur) === false) {
         return false;
     }
     if (verifError(input1) === false || verifError(input2) === false) {
@@ -26,10 +33,22 @@ let addition = function () {
     enleverError();
 
     //les addit
-    reponse.innerText = parseFloat(nombre1) + parseFloat(nombre2);
+    switch (operateur.innerText) {
+        case "+":
+            reponse.innerText = parseFloat(nombre1) + parseFloat(nombre2);
+            break;
+        case "-":
+            reponse.innerText = parseFloat(nombre1) - parseFloat(nombre2);
+            break;
+        case "*":
+            reponse.innerText = parseFloat(nombre1) * parseFloat(nombre2);
+            break;
+        case "/":
+            reponse.innerText = parseFloat(nombre1) / parseFloat(nombre2);
+            break;
+    }
     return false
-    quedeschiffres(input1);
-    quedeschiffres(input2);
+
 }
 let check = function (input) {
     if (input.value === "") {
@@ -38,6 +57,14 @@ let check = function (input) {
         input.value = "champs obligatoire";
         //enlever le focus de l'element actif
         input.blur();
+        return false;
+    }
+}
+
+let checkSpan = function (input) {
+    if (operateur.innerText === "") {
+        //on va mettre un message erreur
+        reponse.innerText = "choisir operateur";
         return false;
     }
 }
@@ -57,13 +84,53 @@ let enleverError = function () {
         }
     });
 }
-
-let quedeschiffres = function () {
-    this.value = this.value.replace(/\D/g, '');
+// Vérifier que l'on introduit bien nombre
+let checkNumber = function () {
+    // Définition d'un expression régulière
+    let reg = /^-?[0-9]*\.?[0-9]*$/;
+    // Vérifier si la valeur est bien un nombre
+    while (!reg.test(this.value)) {
+        // Récupérer la longeur de la chaine de caractère
+        let longueurText = this.value.length;
+        // Enlever le dernier cractère
+        this.value = this.value.substr(0, longueurText - 1);
+    }
 }
+
+
+function clear() {
+    input1.value = "";
+    input2.value = "";
+    reponse.innerText = "";
+}
+function choisirOperateur() {
+    //prendre la valeur
+    let unOperateur = this.innerText;
+    //le mettre dans le span
+    operateur.innerText = unOperateur;
+}
+
+let focus2 = function () {
+    input2.focus();
+}
+
+//ecouteurs 
 btn.addEventListener('click', addition);
 inputs.forEach(function (element) {
     element.addEventListener('click', enleverError);
 });
-input1.addEventListener('keyup', quedeschiffres);
-input2.addEventListener('keyup', quedeschiffres);
+
+btnreset.addEventListener('click', clear);
+
+inputs.forEach(function (input) {
+    input.addEventListener('keyup', checkNumber);
+});
+lesOperateurs.forEach(function (element) {
+    element.addEventListener('click', choisirOperateur);
+});
+lesOperateurs.forEach(function (element) {
+    element.addEventListener('click', focus2);
+});
+
+
+
