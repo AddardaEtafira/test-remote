@@ -29,3 +29,6 @@ button {
 
 .error {
   border: 1px solid #8E0D0D; }
+
+#exo-8 input {
+  width: 100%; }

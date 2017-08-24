@@ -6,7 +6,9 @@ let reponse = section8.querySelector("#reponse");
 let inputs = section8.querySelectorAll('input');
 let btnreset = section8.querySelector('#reset');
 let operateur = section8.querySelector('#operateur');
-let lesOperateurs = section8.querySelectorAll('#operateur-1')
+let lesOperateurs = section8.querySelectorAll('#operateur-1');
+let btnChiffre = section8.querySelectorAll('#operateurChiffre');
+/////////////
 //ne pas permetre le glisser
 input1.ondrop = function (event) {
     return false
@@ -14,6 +16,8 @@ input1.ondrop = function (event) {
 input2.ondrop = function (event) {
     return false
 }
+
+////////////
 let addition = function () {
     //prendr le nombre dans l'input 1
     let nombre1 = input1.value;
@@ -97,22 +101,50 @@ let checkNumber = function () {
     }
 }
 
-
+//button reset
 function clear() {
     input1.value = "";
     input2.value = "";
     reponse.innerText = "";
+    operateur.innerText
+        = "";
+    //enlever la classe error
+    input1.classList.remove('error');
+    input2.classList.remove('error');
+}
+//mettre le focus ou l'error si input 1 n'est pas plein etverifier qu'il ne oit pas en error
+let focus2 = function () {
+    if (input1.value === "" || input1.classList.contains('error')) {
+        //on va mettre un message erreur
+        input1.classList.add('error');
+        input1.value = "champs obligatoire";
+        return false;
+
+    }
+
+    else {
+        input2.focus();
+    }
 }
 function choisirOperateur() {
-    //prendre la valeur
-    let unOperateur = this.innerText;
-    //le mettre dans le span
-    operateur.innerText = unOperateur;
+    //si l'operateur contien la classe error
+    if (input1.classList.contains('error')) {
+        return false;
+    }
+    //si l'input 1 n'est pas vide
+    if (input1.value != "") {
+        //prendre la valeur
+        let unOperateur = this.innerText;
+        //le mettre dans le span
+        operateur.innerText = unOperateur;
+    }
 }
 
-let focus2 = function () {
-    input2.focus();
+function choisirChiffre() {
+    let unChiffre = this.innerText;
+    input1.innerText = unChiffre;
 }
+
 
 //ecouteurs 
 btn.addEventListener('click', addition);
@@ -132,5 +164,6 @@ lesOperateurs.forEach(function (element) {
     element.addEventListener('click', focus2);
 });
 
-
-
+btnChiffre.forEach(function (element) {
+    element.addEventListener('click', choisirChiffre);
+});

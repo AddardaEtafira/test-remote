@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(3);
 
 
 /***/ }),
@@ -78,11 +78,10 @@ module.exports = __webpack_require__(4);
 "use strict";
 
 
-__webpack_require__(3);
+__webpack_require__(2);
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97,6 +96,8 @@ var inputs = section8.querySelectorAll('input');
 var btnreset = section8.querySelector('#reset');
 var operateur = section8.querySelector('#operateur');
 var lesOperateurs = section8.querySelectorAll('#operateur-1');
+var btnChiffre = section8.querySelectorAll('#operateurChiffre');
+/////////////
 //ne pas permetre le glisser
 input1.ondrop = function (event) {
     return false;
@@ -104,6 +105,8 @@ input1.ondrop = function (event) {
 input2.ondrop = function (event) {
     return false;
 };
+
+////////////
 var addition = function addition() {
     //prendr le nombre dans l'input 1
     var nombre1 = input1.value;
@@ -186,21 +189,45 @@ var checkNumber = function checkNumber() {
     }
 };
 
+//button reset
 function clear() {
     input1.value = "";
     input2.value = "";
     reponse.innerText = "";
+    operateur.innerText = "";
+    //enlever la classe error
+    input1.classList.remove('error');
+    input2.classList.remove('error');
 }
+//mettre le focus ou l'error si input 1 n'est pas plein etverifier qu'il ne oit pas en error
+var focus2 = function focus2() {
+    if (input1.value === "" || input1.classList.contains('error')) {
+        //on va mettre un message erreur
+        input1.classList.add('error');
+        input1.value = "champs obligatoire";
+        return false;
+    } else {
+        input2.focus();
+    }
+};
 function choisirOperateur() {
-    //prendre la valeur
-    var unOperateur = this.innerText;
-    //le mettre dans le span
-    operateur.innerText = unOperateur;
+    //si l'operateur contien la classe error
+    if (input1.classList.contains('error')) {
+        return false;
+    }
+    //si l'input 1 n'est pas vide
+    if (input1.value != "") {
+        //prendre la valeur
+        var unOperateur = this.innerText;
+        //le mettre dans le span
+        operateur.innerText = unOperateur;
+    }
 }
 
-var focus2 = function focus2() {
-    input2.focus();
-};
+function choisirChiffre() {
+    var unChiffre = this.innerText;
+    input1.innerText = unChiffre;
+}
 
 //ecouteurs 
 btn.addEventListener('click', addition);
@@ -220,8 +247,12 @@ lesOperateurs.forEach(function (element) {
     element.addEventListener('click', focus2);
 });
 
+btnChiffre.forEach(function (element) {
+    element.addEventListener('click', choisirChiffre);
+});
+
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
